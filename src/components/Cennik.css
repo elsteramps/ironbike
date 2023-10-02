@@ -1,0 +1,19 @@
+.cennik {
+    padding: 4rem;
+    background: #fff;
+}
+
+.cennik__container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }

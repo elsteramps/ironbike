@@ -1,0 +1,46 @@
+.services-container{
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+table {
+  margin: 0 auto;
+    margin-top: 50px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  tr:hover {
+    background-color: #ddd;
+  }
+
+ .btn-services {
+    background-color: #2405059d; /* Tło przycisku jest przezroczyste */
+    border: 2px solid #2405059d; /* Ramka biała */
+    color: #fff; /* Kolor tekstu biały */
+    padding: 10px 20px; /* Wielkość przycisku */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s; /* Animacja zmiany koloru po najechaniu */
+  }
+  
+  /* Po najechaniu na przycisk zmienia się kolor tła na biały, a tekst na czarny */
+  .btn-services:hover {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer; /* Kursor zmienia się na wskaźnik podczas najechania */
+  }

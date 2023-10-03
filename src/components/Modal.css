@@ -1,14 +1,18 @@
 .modal {
     position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Ustala wartość z-index nad inną zawartością */
+  }
+
+  .display-none{
+    display: none;
   }
   
   .modal-main {
@@ -27,4 +31,26 @@
     top: 10px;
     right: 10px;
     font-size: 1.5rem;
+  }
+
+  .modal-enter {
+    opacity: 0;
+    background-color: none;
+  }
+  
+  .modal-enter-active {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 1000ms , background-color 1000ms ;
+  }
+  
+  .modal-exit {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .modal-exit-active {
+    opacity: 0;
+    background-color: none;
+    transition: opacity 1000ms , background-color 1000ms ;
   }

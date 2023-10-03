@@ -1,13 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Modal.css';
 import ContactForm from './ContactForm';
 import { Button } from './Button';
+import { CSSTransition } from "react-transition-group";
 
-const Modal = ({ show, handleClose }) => {
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+const Modal = ({show, handleClose}) => {
+
+  const [isOpen, setIsOpen] = useState(false);
+
+
+  useEffect(() => {
+      setIsOpen(true);
+    }, []); // Pusta tablica zależności oznacza, że useEffect wykona się tylko raz po montażu komponentu
+
+  handleClose = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <div className={showHideClassName}>
+        <CSSTransition
+        in={isOpen}
+        timeout={200}
+        classNames="modal"
+        unmountOnExit
+      >
+    <div className='modal'>
+
       <section className="modal-main">
         <button onClick={handleClose} className="modal-close-button">
           Zamknij
@@ -15,6 +33,7 @@ const Modal = ({ show, handleClose }) => {
         <ContactForm/>
       </section>
     </div>
+    </CSSTransition>
   );
 };
 

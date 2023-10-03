@@ -7,27 +7,27 @@ function Cards() {
     {
       title: 'Karteczka 1',
       description: 'Opis karteczki 1',
-      imageSrc: './images/img-1.jpg',
+      imageSrc: './images/1.jpg',
     },
     {
       title: 'Karteczka 2',
       description: 'Opis karteczki 2',
-      imageSrc: 'link_do_obrazka_2.jpg',
+      imageSrc: './images/2.jpg',
     },
     {
-      title: 'Karteczka 2',
+      title: 'Karteczka 3',
       description: 'Opis karteczki 2',
-      imageSrc: 'link_do_obrazka_2.jpg',
+      imageSrc: './images/3.jpg',
     },
     {
-      title: 'Karteczka 2',
+      title: 'Karteczka 4',
       description: 'Opis karteczki 2',
-      imageSrc: 'link_do_obrazka_2.jpg',
+      imageSrc: './images/4.jpg',
     },
     {
-      title: 'Karteczka 2',
+      title: 'Karteczka 5',
       description: 'Opis karteczki 2',
-      imageSrc: 'link_do_obrazka_2.jpg',
+      imageSrc: './images/5.jpg',
     },
     // Dodaj więcej danych dla innych karteczek
   ];

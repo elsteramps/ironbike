@@ -1,10 +1,9 @@
-import React, { useState, useEffect} from 'react';
-import { useHistory } from "react-router";
+import React, { useState} from 'react';
+// import { useNavigate } from "react-router-dom";
 import './ContactForm.css';
-import { Button } from './Button';
 import axios from 'axios';
 
-function ContactForm() {
+function ContactForm(show, handleClose) {
 
 
     // const [isFormVisible, setFormVisible] = useState(false);
@@ -19,13 +18,13 @@ function ContactForm() {
     //   return () => clearTimeout(timer);
     // }, []);
 
+  const [submitted, setSubmitted] = useState(false);
+
   const [formData, setFormData] = useState({
     imię: '',
     email: '',
     telefon: '',
   });
-
-  const history = useHistory();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,10 +41,14 @@ function ContactForm() {
         console.log(res);
       })
       .catch(err => console.log(err))
+      setSubmitted(true)
   };
 
   return (
     <div className='form-wrapper'>
+      {submitted ? (
+        <div>Dziękujemy za kontakt. Skontaktujemy się z Tobą wkrótce.</div>
+      ) : (
      <form onSubmit={handleSubmit}>
       <h2 className='contactForm-h2'>Formularz Kontaktowy</h2>
         <div>
@@ -78,9 +81,11 @@ function ContactForm() {
           />
         </div>
         <button type="submit">WYŚLIJ!</button>
-      </form>   
+      </form>
+      )}   
       </div>
   );
 }
+
 
 export default ContactForm;

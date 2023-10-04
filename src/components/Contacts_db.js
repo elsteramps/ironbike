@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import { json } from "body-parser";
 
 function Contacts_db() {
         const [dane, setDane] = useState([]);
 
         useEffect(() => {
             // Wywołaj API, aby pobrać dane z serwera
-            axios.get('https://localhost:8080/reqs')
+            axios.get('http://localhost:8080/reqs')
                 .then(response => {
                     // Obsługa odpowiedzi po udanym zapytaniu
-                    setDane(response.data)
                     console.log(response.data); // Dane otrzymane z serwera
+                    setDane(response.data);
+
                 })
                 .catch(error => {
                     // Obsługa błędu w przypadku niepowodzenia zapytania
@@ -20,12 +22,27 @@ function Contacts_db() {
         
           return (
             <div>
-              <h1>Informacje z bazy danych:</h1>
-              <ul>
-                {dane.map(item => (
-                  <li key={item.id}>{item.nazwa}</li>
-                ))}
-              </ul>
+              <h1>Klienci</h1>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>imię</th>
+                    <th>email</th>
+                    <th>telefon</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {dane.map(item => (
+                    <tr key={item.id}>
+                      <td>{item.id}</td>
+                      <td>{item.imię}</td>
+                      <td>{item.email}</td>
+                      <td>{item.telefon}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           );
         }

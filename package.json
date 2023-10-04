@@ -17,12 +17,12 @@
     "mysql": "^2.18.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.3.4",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "3.4.1",
     "react-transition-group": "^4.4.5"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "server": "node server.js",
     "dev": "concurrently \"npm start\" \"npm run server\"",
     "build": "react-scripts build",

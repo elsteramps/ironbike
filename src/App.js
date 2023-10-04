@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import './App.css';
 import Home from './components/pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, BrowserRouter, Outlet } from 'react-router-dom';
 import Services from './components/pages/Services';
 import Products from './components/pages/Products';
 import Cennik from './components/Cennik';
 import Modal from './components/Modal';
 import Contacts from './components/pages/Contacts';
+import LogIn from './components/pages/LogIn';
+import PrivateRoute from './components/PrivateRout';
 
 
 function App() {
@@ -34,13 +36,15 @@ function App() {
       </Modal>)}
       <Router>
         <Navbar />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/services' component={Services} />
-          <Route path='/clients' component={Contacts} />
-          <Route path='/products' component={Products} />
-          <Route path='/prices' component={Cennik} />
-        </Switch>
+        <Routes>
+          <Route path='/' exact element={<Home/>} />
+          <Route path='/services' element={<Services/>} />
+          <Route path='/login' element={<LogIn/>} />
+          <Route Route path="/private" element={<PrivateRoute />}>
+              </Route>
+          <Route path='/products' element={<Products/>} />
+          <Route path='/prices' element={<Cennik/>} />
+        </Routes>
       </Router>
 
 </>

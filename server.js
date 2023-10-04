@@ -17,7 +17,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'drone_around_world',
+  database: 'requests',
 });
 
 db.connect((err) => {
@@ -31,7 +31,22 @@ db.connect((err) => {
 app.get('/reqs', (req, res) => {
   const sql = 'SELECT * FROM reqs';
 
-  const daneZBazy = db.query(sql, (error, results, fields) => {
+  db.query(sql, (error, results, fields) => {
+    if (error) {
+      console.error('Błąd pobierania z bazy danych ', err);
+      res.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });
+  }
+
+  res.status(200);
+  res.json(results);
+
+  })
+});
+
+app.get('/admin', (req, res) => {
+  const sql = 'SELECT * FROM admin';
+
+ db.query(sql, (error, results, fields) => {
     if (error) {
       console.error('Błąd pobierania z bazy danych ', err);
       res.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });

@@ -36,7 +36,7 @@ function ContactForm(show, handleClose) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     await axios.post('http://localhost:8080/requests', formData)
+     await axios.post('http://localhost:8080/reqs', formData)
       .then(res => {
         console.log(res);
       })

@@ -7,6 +7,7 @@ import Services from './components/pages/Services';
 import Products from './components/pages/Products';
 import Cennik from './components/Cennik';
 import Modal from './components/Modal';
+import Contacts from './components/pages/Contacts';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/services' component={Services} />
+          <Route path='/clients' component={Contacts} />
           <Route path='/products' component={Products} />
           <Route path='/prices' component={Cennik} />
         </Switch>

@@ -11,14 +11,11 @@ function PrivateRoute() {
     if(localStorage.getItem('admin') !== null){
         return true
     }
-    else{
-        return false
-    }
   }
 
   if (!isAuthenticated()) {
     // Jeśli użytkownik nie jest zalogowany, przekieruj go na stronę logowania
-    return null;
+    navigate('/login');
   }
 
   return (

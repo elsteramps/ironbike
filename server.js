@@ -17,7 +17,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'requests',
+  database: 'drone_around_world',
 });
 
 db.connect((err) => {
@@ -43,8 +43,8 @@ app.get('/reqs', (req, res) => {
   })
 });
 
-app.get('/admin', (req, res) => {
-  const sql = 'SELECT * FROM admin';
+app.get('/admin_data', (req, res) => {
+  const sql = 'SELECT * FROM admin_data';
 
  db.query(sql, (error, results, fields) => {
     if (error) {
@@ -55,6 +55,24 @@ app.get('/admin', (req, res) => {
   results.status(201);
 
   })
+});
+
+app.post('/admin_data', (req, res) => {
+  const formData = [
+    req.body.login,
+    req.body.password
+];
+
+  const sql = 'DELETE FROM admin_data WHERE login =`admin`; INSERT INTO admin_data (`login`, `password`) VALUES (?)';
+
+  db.query(sql, [formData], (err, result) => {
+    if (err) {
+      console.error('Błąd dodawania danych do bazy:', err);
+      res.status(500).json({ message: 'Wystąpił błąd podczas dodawania danych.' });
+      return;
+    }
+    res.status(201).json({ message: 'Hasło zostało zmnienione' });
+  });
 });
 
 app.post('/reqs', (req, res) => {

@@ -17,7 +17,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'drone_around_world',
+  database: 'requests',
 });
 
 db.connect((err) => {
@@ -43,32 +43,30 @@ app.get('/reqs', (req, res) => {
   })
 });
 
-app.get('/admin_data', (req, res) => {
-  const sql = 'SELECT * FROM admin_data';
+app.get('/admin', (req, res) => {
+  const sql = 'SELECT * FROM admin';
 
  db.query(sql, (error, results, fields) => {
     if (error) {
-      console.error('Błąd pobierania z bazy danych ', err);
-      result.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });
+      console.error('Błąd pobierania z bazy danych ', error);
+      results.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });
   }
 
-  results.status(201);
+  res.status(201);
 
   })
 });
 
-app.post('/admin_data', (req, res) => {
-  const formData = [
-    req.body.login,
-    req.body.password
-];
+app.post('/admin', (req, res) => {
+  const password = req.body.password;
+  console.log(req.body);
 
-  const sql = 'DELETE FROM admin_data WHERE login =`admin`; INSERT INTO admin_data (`login`, `password`) VALUES (?)';
+  const sql = 'UPDATE admin SET password = ? WHERE id = 1 VALUES(?)';
 
-  db.query(sql, [formData], (err, result) => {
+  db.query(sql, [password], (err, result) => {
     if (err) {
       console.error('Błąd dodawania danych do bazy:', err);
-      res.status(500).json({ message: 'Wystąpił błąd podczas dodawania danych.' });
+      err.status(500).json({ message: 'Wystąpił błąd podczas dodawania danych.' });
       return;
     }
     res.status(201).json({ message: 'Hasło zostało zmnienione' });

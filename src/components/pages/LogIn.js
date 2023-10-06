@@ -31,22 +31,24 @@ export default function LogIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-         await axios.get('http://localhost:8080/admin_data')
+         await axios.get('http://localhost:8080/admin')
           .then((res, err) => {
             console.log(res);
-            if(res.status == 200 && 
-              formData.login == res.data[0].login && 
-              formData.password == res.data[0].password){
+            // if(res.status == 200
+            //   // formData.login == res.data[0].login && 
+            //   // formData.password == res.data[0].password
+            // )
+            //   {
                 console.log(res.status);
                 handleLoginSuccess(res.data[0].login)
                 console.log(res.data[0].login)
                 navigate('/private')
             }
-            else{
-            console.log("Błędne dane")
-            }
-          })
-          .catch(err => console.log(err))
+            // else{
+            // console.log("Błędne dane")
+            // }
+          // }
+          ).catch(err => console.log(err))
       };
 
 

@@ -1,42 +1,29 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { json } from "body-parser";
+import { json } from "body-parser"
+import bcrypt from 'bcryptjs'
 
 function Contacts_db() {
 
-        const bcrypt = require("bcrypt");
-        const saltRounds = 10;
+        // bcrypt
+        // .genSalt(saltRounds)
+        // .then(salt => {
+        //   console.log('Salt: ', salt)
+        //   return bcrypt.hash(formData.password, salt)
+        // })
+        // .then(hash => {
+        //   console.log('Hash: ', hash)
+        //   setFormData(
+        //     [
+        //       { login: 'admin', password: hash },
+        //     ]
+        // );
+        // })
+        // .catch(err => console.error(err.message))
 
-        bcrypt
-        .genSalt(saltRounds)
-        .then(salt => {
-          console.log('Salt: ', salt)
-          return bcrypt.hash(formData.password, salt)
-        })
-        .then(hash => {
-          console.log('Hash: ', hash)
-          setFormData(
-            [
-              { login: 'admin', password: hash },
-            ]
-        );
-        })
-        .catch(err => console.error(err.message))
+        const [password, setPass] = useState('');
 
         const [dane, setDane] = useState([]);
-
-        const [formData, setFormData] = useState({
-          login: 'admin',
-          password: ''
-        });
-
-        const handleChange = (e) => {
-          const { name, value } = e.target;
-          setFormData({
-            ...formData,
-            [name]: value,
-          });
-        };
 
         useEffect(() => {
             // Wywołaj API, aby pobrać dane z serwera
@@ -67,14 +54,20 @@ function Contacts_db() {
             // }
 
 
-
             const handleClick = async (e) => {
               e.preventDefault();
-               await axios.post('http://localhost:8080/admin_data', formData)
+              const salt = bcrypt.genSaltSync(10);
+              const haShedPassword = bcrypt.hashSync(password, salt);
+              setPass(haShedPassword);
+               await axios.post('http://localhost:8080/admin', password)
                 .then(res => {
                   console.log(res);
                 })
                 .catch(err => console.log(err))
+            };
+
+            const handleChange = (e) => {
+              setPass(e.target.value);
             };
         
           return (
@@ -83,9 +76,9 @@ function Contacts_db() {
               <label htmlFor="password">Nowe hasło:</label>
               <input
                 type="text"
-                id="imię"
-                name="imię"
-                value={formData.password}
+                id="password"
+                name="password"
+                value={password}
                 onChange={handleChange}
               />
               <h1>Klienci</h1>

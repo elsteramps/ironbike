@@ -37,7 +37,7 @@ app.get('/reqs', (req, res) => {
       res.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });
   }
 
-  res.status(200);
+  res.status(201);
   res.json(results);
 
   })
@@ -49,11 +49,10 @@ app.get('/admin', (req, res) => {
  db.query(sql, (error, results, fields) => {
     if (error) {
       console.error('Błąd pobierania z bazy danych ', err);
-      res.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });
+      result.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });
   }
 
-  res.status(200);
-  res.json(results);
+  results.status(201);
 
   })
 });

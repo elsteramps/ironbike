@@ -24,7 +24,6 @@ function PrivateRoute() {
   return (
     <>
     <Outlet/>
-    <Contacts/>
     </>
   );
 }

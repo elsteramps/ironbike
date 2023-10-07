@@ -17,7 +17,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'requests',
+  database: 'drone_around_world',
 });
 
 db.connect((err) => {
@@ -44,7 +44,7 @@ app.get('/reqs', (req, res) => {
 });
 
 app.get('/admin', (req, res) => {
-  const sql = 'SELECT * FROM admin';
+  const sql = 'SELECT * FROM admin_data';
 
  db.query(sql, (error, results, fields) => {
     if (error) {
@@ -57,11 +57,11 @@ app.get('/admin', (req, res) => {
   })
 });
 
-app.post('/admin', (req, res) => {
-  const password = req.body.password;
+app.post('/admin_data', (req, res) => {
+  const password = req.body.haShedPassword;
   console.log(req.body);
 
-  const sql = 'UPDATE admin SET password = ? WHERE id = 1 VALUES(?)';
+  const sql = 'UPDATE admin_data SET password = ? WHERE id = 1;';
 
   db.query(sql, [password], (err, result) => {
     if (err) {

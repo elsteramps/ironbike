@@ -53,13 +53,10 @@ function Contacts_db() {
             //   return result;
             // }
 
-
             const handleClick = async (e) => {
               e.preventDefault();
-              const salt = bcrypt.genSaltSync(10);
-              const haShedPassword = bcrypt.hashSync(password, salt);
-              setPass(haShedPassword);
-               await axios.post('http://localhost:8080/admin', password)
+              const haShedPassword = bcrypt.hashSync(password, 10);
+              await axios.post('http://localhost:8080/admin_data', {haShedPassword})
                 .then(res => {
                   console.log(res);
                 })

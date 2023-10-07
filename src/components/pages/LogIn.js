@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import Home from './Home';
+import bcrypt from 'bcryptjs'
 import { redirect, useNavigate } from 'react-router';
 
 export default function LogIn() {
@@ -31,25 +32,40 @@ export default function LogIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-         await axios.get('http://localhost:8080/admin')
+         await axios.get('http://localhost:8080/admin_data')
           .then((res, err) => {
-            console.log(res);
-            // if(res.status == 200
-            //   // formData.login == res.data[0].login && 
-            //   // formData.password == res.data[0].password
-            // )
-            //   {
-                console.log(res.status);
-                handleLoginSuccess(res.data[0].login)
-                console.log(res.data[0].login)
-                navigate('/private')
+            console.log(res)
+            bcrypt.compare(formData.password, 
+              res.data[0].password, 
+              (error, result) => {
+              if (error) {
+                console.error('Błąd porównywania haseł:', error);
+              } else {
+                if (result === true) {
+                  // Hasło jest poprawne
+                  console.log('Hasło jest poprawne');
+                  console.log(res.status);
+                  handleLoginSuccess(res.data[0].login)
+                  console.log(res.data[0].login)
+                  navigate('/private')
+                } else {
+                  // Hasło jest niepoprawne
+                  console.log('Hasło jest niepoprawne');
+                }
+              }
+            });
+            
+            if(res.status == 200 && 
+              formData.login == res.data[0].login && 
+              formData.password == res.data[0].password){
             }
-            // else{
-            // console.log("Błędne dane")
-            // }
-          // }
-          ).catch(err => console.log(err))
-      };
+            
+            else{
+            console.log("Błędne dane")
+            };
+          })
+          .catch(err => console.log(err))
+          }
 
 
   return (

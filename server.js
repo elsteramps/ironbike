@@ -51,11 +51,30 @@ app.get('/admin', (req, res) => {
       console.error('Błąd pobierania z bazy danych ', error);
       results.status(500).json({ message: 'Wystąpił błąd podczas pobierania danych.' });
   }
-
-  res.status(201);
+  console.log(results)
+  res.json(results);
 
   })
 });
+
+app.get('/images', (req, res) => {
+  const imagesFolder = path.join(__dirname, 'public/images');
+  fs.readdir(imagesFolder, (err, files) => {
+    if (err) {
+      console.error('Błąd odczytu folderu z zdjęciami', err);
+      res.status(500).json({ error: 'Błąd odczytu folderu z zdjęciami' });
+      return;
+    }
+
+    const images = files.map(file => ({
+      name: file,
+      path: `/images/${file}` // Ścieżka do zdjęcia
+    }));
+
+    res.json(images);
+  });
+});
+
 
 app.post('/admin', (req, res) => {
   const password = req.body.haShedPassword;

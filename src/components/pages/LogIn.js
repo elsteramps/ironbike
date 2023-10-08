@@ -34,26 +34,24 @@ export default function LogIn() {
         e.preventDefault();
          await axios.get('http://localhost:8080/admin')
           .then((res, err) => {
-            console.log(res)
+            console.log(res.data)
             bcrypt.compare(formData.password, 
               res.data[0].password, 
               (error, result) => {
               if (error) {
                 console.error('Błąd porównywania haseł:', error);
-              } else {
-                if (result === true) {
+              } else if (result === true) {
                   // Hasło jest poprawne
                   console.log('Hasło jest poprawne');
                   console.log(res.status);
-                  handleLoginSuccess(res.data[0].login)
+                  handleLoginSuccess(res.data)
                   console.log(res.data[0].login)
                   navigate('/private')
                 } else {
                   // Hasło jest niepoprawne
                   console.log('Hasło jest niepoprawne');
                 }
-              }
-            });
+              });
             
             // if(res.status == 200 && 
             //   formData.login == res.data[0].login && 

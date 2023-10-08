@@ -115,9 +115,12 @@
 
 .social-icons {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   width: 240px;
+}
+
+.social-icon-link{
+  margin: 10px;
 }
 
 .social-logo {

@@ -32,7 +32,7 @@ export default function LogIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-         await axios.get('http://localhost:8080/admin_data')
+         await axios.get('http://localhost:8080/admin')
           .then((res, err) => {
             console.log(res)
             bcrypt.compare(formData.password, 
@@ -55,14 +55,14 @@ export default function LogIn() {
               }
             });
             
-            if(res.status == 200 && 
-              formData.login == res.data[0].login && 
-              formData.password == res.data[0].password){
-            }
+            // if(res.status == 200 && 
+            //   formData.login == res.data[0].login && 
+            //   formData.password == res.data[0].password){
+            // }
             
-            else{
-            console.log("Błędne dane")
-            };
+            // else{
+            // console.log("Błędne dane")
+            // };
           })
           .catch(err => console.log(err))
           }

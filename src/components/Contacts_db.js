@@ -56,7 +56,7 @@ function Contacts_db() {
             const handleClick = async (e) => {
               e.preventDefault();
               const haShedPassword = bcrypt.hashSync(password, 10);
-              await axios.post('http://localhost:8080/admin_data', {haShedPassword})
+              await axios.post('http://localhost:8080/admin', {haShedPassword})
                 .then(res => {
                   console.log(res);
                 })

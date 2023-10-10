@@ -19,7 +19,7 @@ function App() {
    useEffect(() => {
     const openModalTimeout = setTimeout(() => {
       setShowModal(true);
-    }, 5000); // Otwórz modal po 7 sekundzie
+    }, 15000); // Otwórz modal po 7 sekundzie
     return () => {
       clearTimeout(openModalTimeout);
     };

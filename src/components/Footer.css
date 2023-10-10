@@ -116,11 +116,17 @@
 .social-icons {
   display: flex;
   align-items: center;
-  width: 240px;
+  max-width: 240px;
 }
 
 .social-icon-link{
   margin: 10px;
+}
+
+.webRights-contact{
+display: flex;
+flex-direction: column;
+text-align: center;
 }
 
 .social-logo {

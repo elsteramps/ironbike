@@ -28,6 +28,7 @@ db.connect((err) => {
   console.log('Połączono z bazą danych MySQL');
 });
 
+//wyświetlanie klientów na stronie
 app.get('/reqs', (req, res) => {
   const sql = 'SELECT * FROM reqs';
 
@@ -43,6 +44,7 @@ app.get('/reqs', (req, res) => {
   })
 });
 
+//pobieranie 
 app.get('/admin', (req, res) => {
   const sql = 'SELECT * FROM admin';
 

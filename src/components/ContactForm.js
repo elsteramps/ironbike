@@ -26,6 +26,14 @@ function ContactForm(show, handleClose) {
     telefon: '',
   });
 
+  const [zgodaTelefoniczna, setZgodaTelefoniczna] = useState(false);
+    // const [error, setError] = useState('');
+
+    const handleChange1 = (event) => {
+        setZgodaTelefoniczna(event.target.checked);
+        // setError(''); // Usuń ewentualny błąd po zaznaczeniu checkboxa
+    }
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -53,7 +61,7 @@ function ContactForm(show, handleClose) {
       <h2 className='contactForm-h2'>Formularz Kontaktowy</h2>
         <div>
           <label htmlFor="imię">Imię:</label>
-          <input
+          <input required
             type="text"
             id="imię"
             name="imię"
@@ -63,7 +71,7 @@ function ContactForm(show, handleClose) {
         </div>
         <div>
           <label htmlFor="email">Email:</label>
-          <input
+          <input required
             type="email"
             id="email"
             name="email"
@@ -73,12 +81,22 @@ function ContactForm(show, handleClose) {
         </div>
         <div>
           <label htmlFor="telefon">Telefon:</label>
-          <textarea
+          <textarea required
             id="telefon"
             name="telefon"
             value={formData.telefon}
             onChange={handleChange}
           />
+        </div>
+        <div>
+        <label>
+                        Zgoda na kontakt telefoniczny:
+                        <input required
+                            type="checkbox"
+                            checked={zgodaTelefoniczna}
+                            onChange={handleChange1}
+                        />
+                    </label>
         </div>
         <button type="submit">WYŚLIJ!</button>
       </form>

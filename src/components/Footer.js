@@ -46,22 +46,26 @@ function Footer() {
         <div className='social-media-wrap'>
           <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-              <img src="icons/logo_drone-modified.ico" alt="drone_icon" height="80"></img>
+              <img src="./icons/logo_drone-modified.ico" alt="drone_icon" height="80"></img>
             </Link>
           </div>
+          <div className='webRights-contact'>
           <small className='website-rights'>DroneAroundWorld © 2023</small>
+          <small className='website-rights'>+48605467076</small>
+          <small className='website-rights'>dronearoundworld@gmail.com</small>
+          </div>
           <div className='social-icons'>
-            <Link
+            {/* <Link
               className='social-icon-link facebook'
               to='/'
               target='_blank'
               aria-label='Facebook'
             >
               <i className='fab fa-facebook-f' />
-            </Link>
+            </Link> */}
             <Link
               className='social-icon-link instagram'
-              to='/'
+              to='https://www.instagram.com/dronearoundworld/'
               target='_blank'
               aria-label='Instagram'
             >
@@ -69,7 +73,7 @@ function Footer() {
             </Link>
             <Link
               className='social-icon-link youtube'
-              to='/'
+              to='https://www.youtube.com/channel/UCNl-MeYvaOmxdgzcTCPHIFg'
               target='_blank'
               aria-label='Youtube'
             >

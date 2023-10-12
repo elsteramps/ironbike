@@ -90,13 +90,13 @@ function ContactForm(show, handleClose) {
         </div>
         <div>
         <label>
-                        Zgoda na kontakt telefoniczny:
+        Wyrażam zgodę na przetwarzanie moich danych osobowych w postaci podanego przeze mnie numeru telefonu przez (nazwa administratora danych) w celu prowadzenia działań marketingowych przy użyciu telekomunikacyjnych urządzeń końcowych oraz automatycznych systemów wywołujących w rozumieniu ustawy Prawo telekomunikacyjne.:
+        </label>
                         <input required
                             type="checkbox"
                             checked={zgodaTelefoniczna}
                             onChange={handleChange1}
-                        />
-                    </label>
+                         />
         </div>
         <button type="submit">WYŚLIJ!</button>
       </form>

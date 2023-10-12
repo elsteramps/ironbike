@@ -32,7 +32,7 @@ export default function LogIn() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-         await axios.get('http://localhost:8080/admin')
+         await axios.get('http://localhost:8080/admin_data')
           .then((res, err) => {
             console.log(res.data)
             bcrypt.compare(formData.password, 

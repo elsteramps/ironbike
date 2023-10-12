@@ -17,7 +17,7 @@ const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'requests',
+  database: 'drone_around_world',
 });
 
 db.connect((err) => {
@@ -45,8 +45,8 @@ app.get('/reqs', (req, res) => {
 });
 
 //pobieranie 
-app.get('/admin', (req, res) => {
-  const sql = 'SELECT * FROM admin';
+app.get('/admin_data', (req, res) => {
+  const sql = 'SELECT * FROM admin_data';
 
  db.query(sql, (error, results, fields) => {
     if (error) {
@@ -78,7 +78,7 @@ app.get('/images', (req, res) => {
 });
 
 
-app.post('/admin', (req, res) => {
+app.post('/admin_data', (req, res) => {
   const password = req.body.haShedPassword;
   console.log(req.body);
 

@@ -2,7 +2,6 @@ import React from 'react';
 import './Footer.css';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
-import ContactForm from './ContactForm';
 
 function Footer() {
   return (

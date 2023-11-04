@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import '../../App.css';
 import ServiceTable from '../ServiceTable';
 import "../ServiceTable.css";
-import Modal from '../Modal';
 import { Button } from '../Button';
 import '../Button.css'
 
@@ -27,9 +26,6 @@ export default function Services() {
 
   return (
     <div className='services-container'>
-      {showModal && (
-      <Modal show={showModal} handleClose={closeModal}>
-      </Modal>)}
       <h1>Lista Usług</h1>
       <ServiceTable services={services} />
       <p>Wszystkie ceny są podane szacunkowo i mogą się róźnić w zależności od wielu czynników! W celu ustalenia dokładnej wyceny zapraszamy do zgłoszenia się poprzez formularz kontaktowy!</p>

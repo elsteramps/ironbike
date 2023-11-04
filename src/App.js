@@ -4,12 +4,7 @@ import './App.css';
 import Home from './components/pages/Home';
 import { BrowserRouter as Router, Route, Routes, BrowserRouter, Outlet } from 'react-router-dom';
 import Services from './components/pages/Services';
-import Products from './components/pages/Products';
-import Cennik from './components/Cennik';
-import Modal from './components/Modal';
-import Contacts from './components/pages/Contacts';
-import LogIn from './components/pages/LogIn';
-import PrivateRoute from './components/PrivateRout';
+import Cennik from './components/Cennik'
 
 
 function App() {
@@ -31,19 +26,11 @@ function App() {
 
   return (
     <>
-    {showModal && (
-    <Modal show={showModal} handleClose={closeModal}>
-      </Modal>)}
       <Router>
         <Navbar />
         <Routes>
           <Route path='/' exact element={<Home/>} />
           <Route path='/services' element={<Services/>} />
-          <Route path='/login' element={<LogIn/>} />
-          <Route Route path="/private" element={<PrivateRoute />}>
-          <Route path='clients' element={<Contacts/>} />
-          </Route>
-          <Route path='/products' element={<Products/>} />
           <Route path='/prices' element={<Cennik/>} />
         </Routes>
       </Router>

@@ -1,6 +1,5 @@
 import React, {useState}from 'react';
 import './Cennik.css';
-import Modal from './Modal';
 
 function Cennik() {
 
@@ -16,9 +15,6 @@ function Cennik() {
 
   return (
     <>
-    {showModal && (
-      <Modal show={showModal} handleClose={closeModal}>
-      </Modal>)}
     <div className='cennik'>
       <div className='cennik__container'>
             <h2>Jakie są ceny naszych usług?</h2>

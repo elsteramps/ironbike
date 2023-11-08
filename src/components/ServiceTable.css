@@ -5,10 +5,28 @@
 
 table {
   margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
+  }
+
+.table-name{
+  width: 100%;
+  text-align: center;
+}
+
+.table-warning{
+  margin: 20px;
+  text-align: center;
+}
+
+.table-warning-info{
+  margin: 20px;
+}
+
+  .table-header{
+    text-align: center;
   }
   
   th, td {

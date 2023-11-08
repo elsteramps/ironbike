@@ -21,7 +21,7 @@ const ServiceTable = (props) => {
             {services.map((service, index) => (
               <tr key={index}>
                 <td>{service.name}</td>
-                <td>{service.price}</td>
+                <td className='price-field'>{service.price}</td>
               </tr>
             ))}
           </tbody>

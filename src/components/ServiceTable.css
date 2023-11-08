@@ -16,6 +16,10 @@ table {
   text-align: center;
 }
 
+.price-field{
+  width: 100px;
+}
+
 .table-warning{
   margin: 20px;
   text-align: center;

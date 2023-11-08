@@ -34,6 +34,9 @@ function Navbar() {
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
           </div>
+          <div className='nav-label'>
+          <h2 className='nav-label-text'>SKLEP/SERWIS ROWEROWY "IRONBIKE"</h2>
+          </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
@@ -49,7 +52,7 @@ function Navbar() {
                 Usługi
               </Link>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <Link
                 to='/prices'
                 className='nav-links'
@@ -57,7 +60,7 @@ function Navbar() {
               >
                 Cennik
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </nav>

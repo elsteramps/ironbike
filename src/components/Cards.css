@@ -7,6 +7,21 @@ h1 {
   text-align: center;
 }
 
+.content{
+  display: flex;
+  justify-content: center;
+}
+
+.content-wrapper{
+  max-width: 1200px;
+}
+
+.content-text{
+  text-align: left;
+  font-size: 2rem;
+  margin: 50px auto;
+}
+
 .cards__container {
   display: flex;
   flex-flow: column;

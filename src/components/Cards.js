@@ -73,16 +73,13 @@ function Cards() {
   return (
     <div className='cards'>
       <h1>SKLEP/SERWIS ROWEROWY "IRONBIKE"</h1>
-      <div className='cards__container'>
-        <div className='cards__wrapper'>
-          <ul className='cards__items'>
-          <div className="card-container">
-            {images.map((card, index) => (
-              <Card key={index} imageSrc={'./images/'+card} description = {''} />
-            ))}
+      <div className='content'>
+      <div className='content-wrapper'>
+      <p className='content-text'>Witaj w naszym raju dla miłośników rowerów! Nasz sklep i serwis rowerowy już od ponad dwóch lat jest miejscem, gdzie pasja spotyka się z profesjonalizmem, a twoja przygoda na dwóch kółkach zaczyna się naprawdę!</p>
+      <p className='content-text'>Oferujemy nie tylko rowery, a także akcesoria, narzędzia i gadżety rowerowe. Chcemy, abyś czuł się pewnie i stylowo na każdej trasie!</p>
+      <p className='content-text'>Przyjdź do naszego sklepu i serwisu rowerowego, gdzie wspólnie z nami odkryjesz radość z jazdy na rowerze i doświadczysz profesjonalnej obsługi, której zasługujesz!</p>
+      <p className='content-text'> Niestety nie posiadamy jeszcze sklepu internetowego na naszej stronie, natomiast, większość naszych produktów sprzedajemy na naszym sklepie na Allegro, więc, serdecznie zapraszamy również go odwiedzić! :)</p>
       </div>
-          </ul>
-        </div>
       </div>
     </div>
   );

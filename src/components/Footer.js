@@ -51,6 +51,7 @@ function Footer() {
           </div>
           <div className='webRights-contact'>
           <small className='website-rights'>IRONBIKE Mateusz Sernecki © 2020</small>
+          <small className='website-rights'>Żelazna 52, Wrocław</small>
           <small className='website-rights'>+48574375000</small>
           <small className='website-rights'>dronearoundworld@gmail.com</small>
           </div>
@@ -82,11 +83,11 @@ function Footer() {
           </div>
         </div>
       </section>
-          <iframe
+      <iframe
             className='footer-map' 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1176.2600748088737!2d17.006953356078025!3d51.09867404780058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc33950a9f7e5%3A0xf34c3b5ca9a85d61!2sIRONBIKE%20serwis%20rowerowy!5e0!3m2!1spl!2spl!4v1699527713704!5m2!1spl!2spl" 
-            width="600" 
-            height="450" 
+            width="500" 
+            height="300" 
             style={{border:0}} 
             allowFullScreen="" 
             loading="lazy" 

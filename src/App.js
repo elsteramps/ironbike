@@ -11,16 +11,16 @@ function App() {
 
   const [showModal, setShowModal] = useState(false);
 
-   useEffect(() => {
-    const openModalTimeout = setTimeout(() => {
-      setShowModal(true);
-    }, 15000); // Otwórz modal po 7 sekundzie
-    return () => {
-      clearTimeout(openModalTimeout);
-    };
-  }, []); // Pusta tablica zależności oznacza, że useEffect wykona się tylko raz po montażu komponentu
+  //  useEffect(() => {
+  //   const openModalTimeout = setTimeout(() => {
+  //     setShowModal(true);
+  //   }, 15000); // Otwórz modal po 7 sekundzie
+  //   return () => {
+  //     clearTimeout(openModalTimeout);
+  //   };
+  // }, []); // Pusta tablica zależności oznacza, że useEffect wykona się tylko raz po montażu komponentu
 
-  const closeModal = () => setShowModal(false);
+  // const closeModal = () => setShowModal(false);
 
   // --openssl-legacy-provider start
 

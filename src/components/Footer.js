@@ -53,7 +53,6 @@ function Footer() {
           <small className='website-rights'>IRONBIKE Mateusz Sernecki © 2020</small>
           <small className='website-rights'>Żelazna 52, Wrocław</small>
           <small className='website-rights'>+48574375000</small>
-          <small className='website-rights'>dronearoundworld@gmail.com</small>
           </div>
           <div className='social-icons'>
             {/* <Link
@@ -66,19 +65,11 @@ function Footer() {
             </Link> */}
             <Link
               className='social-icon-link instagram'
-              to='https://www.instagram.com/dronearoundworld/'
+              to='https://www.instagram.com/ironbike_wro/'
               target='_blank'
               aria-label='Instagram'
             >
               <i className='fab fa-instagram' />
-            </Link>
-            <Link
-              className='social-icon-link youtube'
-              to='https://www.youtube.com/channel/UCNl-MeYvaOmxdgzcTCPHIFg'
-              target='_blank'
-              aria-label='Youtube'
-            >
-              <i className='fab fa-youtube' />
             </Link>
           </div>
         </div>

@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import '../../App.css';
 import ServiceTable from '../ServiceTable';
+import Maintenance from '../Maintanence';
 import "../ServiceTable.css";
 import '../Button.css'
 
@@ -98,6 +101,26 @@ export default function Services() {
     {name: 'Złożenie roweru na zamówienie (części zamówione w IRONBIKE)', price: 'GRATIS'}
    ];
 
+   const services_przeglady = [
+    {name: 'Regulacja przerzutek', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Regulacja hamulców', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Kontrola luzów na łożyskach (piasty, suport, stery)', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Kontrola ciśnienia w oponach', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Regulacja połączeń śrubowych', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Smarowanie łańcucha', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Czyszczenie i smarowanie goleni amortyzatora', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Montaż akcesoriów (zakupionych w IRONBIKE)', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Czyszczenie napędu', priceReg: <FontAwesomeIcon icon={faCheck} />, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Centrowanie kół', priceReg: <FontAwesomeIcon icon={faTimes}/>, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Serwis łożysk kulkowych (piasty, suport, stery)', priceReg: <FontAwesomeIcon icon={faTimes}/>, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Smarowanie pivotów hamilców (dotyczy V-brake)', priceReg: <FontAwesomeIcon icon={faTimes}/>, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Odpowietrzanie hamulców (dotyczy hydraulicznych)', priceReg: <FontAwesomeIcon icon={faTimes}/>, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Czyszczenie roweru', priceReg: <FontAwesomeIcon icon={faTimes}/>, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'Wymiana zużytych części i inne naprawy', priceReg: <FontAwesomeIcon icon={faTimes}/>, priceFull: <FontAwesomeIcon icon={faCheck} />},
+    {name: 'CENA', priceReg: '180 zł', priceFull: '360 zł'},
+
+   ]
+
 
 
   return (
@@ -118,12 +141,23 @@ export default function Services() {
       <ServiceTable 
       services = {services_inne}
       table_name = 'Inne'/>
-        <h2 className='table-warning'>UWAGA!</h2>
+      <p className='table-warning-info'>*Przy malowaniu rower zostaje rozebrany do gołej ramy, która po zabezpieczeniu wrażliwych punktów jest poddawana piaskowaniu i malowaniu proszkowemu. Taka metoda zapewnia dużą trwałość i odporność na zarysowania.</p>
+      <h2 className='table-warning'>UWAGA!</h2>
         <p className='table-warning-info'> 
             Podane ceny dotyczą wyłącznie usługi, nie zawierają w sobie kosztów komponentów!
             Podane ceny są wyłącznie orientacyjne, koszt usługi może się różnić od podanego w tabeli!
             Może tak być szczególnie w przypadku gdy niektóre komponenty mogą być uszkodzone w sposób utrudniający ich wymianę (np. zapieczony gwint, zerwana lub objechana śruba), albo dostęp do nich jest utrudniony (dotyczy szczególnie rowerów holenderskich). Po dokładną wycenę zapraszam z rowerem☺
         </p>
+        
+        <div className = 'przeglady'>
+      <Maintenance
+      services = {services_przeglady}
+      table_name = 'Przeglądy'
+      />
+      <h2 className='table-warning'>UWAGA!</h2>
+      <p className='table-warning-info'>W ceny przeglądu nie są wliczone ceny części</p>
+      <p className='table-warning-info'>W celu dokładnej wyceny zapraszamy do naszego serwisu z rowerem</p>
+      </div>
     </div>
   );
   }

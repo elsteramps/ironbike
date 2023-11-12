@@ -164,6 +164,10 @@ text-align: center;
     padding-top: 2rem;
   }
 
+  .footer-map{
+    width: 250px;
+  }
+
   .footer-input {
     width: 100%;
   }

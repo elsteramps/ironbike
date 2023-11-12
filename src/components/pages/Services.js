@@ -17,7 +17,7 @@ export default function Services() {
 
   const services_naped = [
     {name: 'Regulacja przerzutki przód/tył', price: '35-50 zł'},
-    {name: 'ymiana przerzutki przód (z regulacją)', price: '60 zł'},
+    {name: 'Wymiana przerzutki przód (z regulacją)', price: '60 zł'},
     {name: 'Wymiana przerzutki tył (z regulacją)', price: '50 zł'},
     {name: 'Wymiana haka przerzutki (bez regulacji)', price: '10 zł'},
     {name: 'Prostowanie haka przerzutki (bez regulacji)', price: '30 zł'},

@@ -179,6 +179,9 @@ text-align: center;
   .social-media-wrap {
     flex-direction: column;
   }
+  .footer-map{
+    width: 200px;
+  }
 }
 
 @media screen and (max-width: 768px) {

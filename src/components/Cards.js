@@ -81,7 +81,7 @@ function Cards() {
       <p className='content-text'>Przyjdź do naszego sklepu i serwisu rowerowego, gdzie wspólnie z nami odkryjesz radość z jazdy na rowerze i doświadczysz profesjonalnej obsługi, której zasługujesz!</p>
       <p className='content-text'> Niestety nie posiadamy jeszcze sklepu internetowego na naszej stronie, natomiast, większość naszych produktów sprzedajemy na naszym sklepie na Allegro, więc, serdecznie zapraszamy również go odwiedzić! :</p>
       <h2 className='bikestore-label'>SKLEP ROWEROWY</h2>
-      <p className='content-text'> Jak na rzie, niestety, nie mamy sklepu internetowego na naszej stronie, natomiast, zapraszamy do naszego {<Link className='allegro-link' to='https://allegro.pl/uzytkownik/Iron-Bike'><span className='allegro-link-span'>sklepu</span></Link>} na Allegro!</p>
+      <p className='content-text'> Jak na razie, niestety, nie mamy sklepu internetowego na naszej stronie, natomiast, zapraszamy do naszego {<Link className='allegro-link' to='https://allegro.pl/uzytkownik/Iron-Bike'><span className='allegro-link-span'>sklepu</span></Link>} na Allegro!</p>
       <div className='allegro-img'>
       <Link  
       to='https://allegro.pl/uzytkownik/Iron-Bike'>

@@ -2,7 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
+
 require('dotenv').config();
+const password = process.env.PASSWORD_EMAIL;
+console.log(process.env.PASSWORD_EMAIL)
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -16,12 +19,12 @@ app.use(bodyParser.json());
 
 
 const transporter = nodemailer.createTransport({
-  host: "smtp-mail.outlook.com",
-  port: 587,
-  secure: false,
+  host: "smtp.poczta.onet.pl",
+  port: 465,
+  secure: true,
   auth: {
     // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: 'ironbikewropl@outlook.com',
+    user: 'jankicyclist@op.pl',
     pass: process.env.PASSWORD_EMAIL,
   }
 });
@@ -30,8 +33,8 @@ const transporter = nodemailer.createTransport({
 async function send(data) {
   // send mail with defined transport object
   const info = await transporter.sendMail({
-    from: '"Ironbike Wrocław" <ironbikewropl@outlook.com>', // sender address
-    to: "elstermetalhead@gmail.com", // list of receivers
+    from: '"Ironbike Wrocław" <jankicyclist@op.pl>', // sender address
+    to: "mateusz.sernecki@gmail.com", // list of receivers
     subject: "Jebać dzieci", // Subject line
     text: 'data', // plain text body
     html: '<p>Ten chuj chce z tobą pogadać:</p><div>' + data + '</div>', // html body

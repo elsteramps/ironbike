@@ -34,7 +34,7 @@ async function send(data) {
   // send mail with defined transport object
   const info = await transporter.sendMail({
     from: '"Ironbike Wrocław" <jankicyclist@op.pl>', // sender address
-    to: "mateusz.sernecki@gmail.com", // list of receivers
+    to: process.env.EMAIL, // list of receivers
     subject: "Jebać dzieci", // Subject line
     text: 'data', // plain text body
     html: '<p>Ten chuj chce z tobą pogadać:</p><div>' + data + '</div>', // html body

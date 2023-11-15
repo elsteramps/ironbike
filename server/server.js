@@ -2,9 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
+require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 // Ustaw obsługę CORS
 app.use(cors());

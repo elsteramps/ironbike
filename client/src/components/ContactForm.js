@@ -44,7 +44,7 @@ function ContactForm(show, handleClose) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-     await axios.post('http://localhost:5000/reqs', formData)
+     await axios.post('https://ironbike.onrender.com/reqs', formData)
       .then(res => {
         console.log(res);
       })

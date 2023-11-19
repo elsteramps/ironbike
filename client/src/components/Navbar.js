@@ -57,7 +57,7 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            <li onClick={openModal} className='nav-item'>
+            <li onClick={openModal} className='nav-item nav-item-form'>
               <Link className='nav-links' onClick={closeMobileMenu}>
                 Zamów wycenę
               </Link>

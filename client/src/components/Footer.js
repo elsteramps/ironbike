@@ -56,7 +56,10 @@ function Footer() {
         <div className='social-media-wrap'>
           <div className='footer-logo'>
             <Link to='/' className='social-logo'>
-              <img src="./icons/photo_2023-11-09_11-54-51.jpg" alt="drone_icon" height="80"></img>
+              <img 
+              src="./icons/photo_2023-11-09_11-54-51.jpg" 
+              alt="drone_icon" 
+              height="80"></img>
             </Link>
           </div>
           <div className='webRights-contact'>

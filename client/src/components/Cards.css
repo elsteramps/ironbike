@@ -28,7 +28,7 @@ h1 {
 }
 
 .content-text{
-  text-align: left;
+  text-align: justify;
   font-size: 2rem;
   margin: 50px auto;
 }
@@ -140,5 +140,13 @@ h1 {
 @media only screen and (max-width: 1024px) {
   .cards__item {
     margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .content-text{
+    text-align: justify;
+    font-size: 1.2rem;
+    margin: 50px auto;
   }
 }

@@ -42,6 +42,16 @@ function Footer() {
           </div>
         </div>
       </div> */}
+      <iframe
+            className='footer-map' 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1176.2600748088737!2d17.006953356078025!3d51.09867404780058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc33950a9f7e5%3A0xf34c3b5ca9a85d61!2sIRONBIKE%20serwis%20rowerowy!5e0!3m2!1spl!2spl!4v1699527713704!5m2!1spl!2spl" 
+            width="500" 
+            height="300" 
+            style={{border:0}} 
+            allowFullScreen="" 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade">
+          </iframe>
       <section className='social-media'>
         <div className='social-media-wrap'>
           <div className='footer-logo'>
@@ -74,7 +84,7 @@ function Footer() {
           </div>
         </div>
       </section>
-      <iframe
+      {/* <iframe
             className='footer-map' 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1176.2600748088737!2d17.006953356078025!3d51.09867404780058!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc33950a9f7e5%3A0xf34c3b5ca9a85d61!2sIRONBIKE%20serwis%20rowerowy!5e0!3m2!1spl!2spl!4v1699527713704!5m2!1spl!2spl" 
             width="500" 
@@ -83,7 +93,7 @@ function Footer() {
             allowFullScreen="" 
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade">
-          </iframe>
+          </iframe> */}
     </div>
   );
 }

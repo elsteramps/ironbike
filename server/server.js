@@ -2,13 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
+const sgMail = require('@sendgrid/mail');
 
 require('dotenv').config();
 const password = process.env.PASSWORD_EMAIL;
 console.log(process.env.PASSWORD_EMAIL)
-
 const app = express();
 const port = process.env.PORT || 5000;
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 // Ustaw obsługę CORS
 app.use(cors());
@@ -17,30 +19,27 @@ app.use(cors());
 app.use(bodyParser.json());
 
 
-
-const transporter = nodemailer.createTransport({
-  host: "smtp.poczta.onet.pl",
-  port: 465,
-  secure: true,
-  auth: {
-    // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-    user: 'jankicyclist@op.pl',
-    pass: process.env.PASSWORD_EMAIL,
-  }
-});
-
-// async..await is not allowed in global scope, must use a wrapper
 async function send(data) {
-  // send mail with defined transport object
-  const info = await transporter.sendMail({
-    from: '"Ironbike Wrocław" <jankicyclist@op.pl>', // sender address
-    to: process.env.EMAIL, // list of receivers
-    subject: "Jebać dzieci", // Subject line
-    text: 'data', // plain text body
-    html: '<p>Ten chuj chce z tobą pogadać:</p><div>' + data + '</div>', // html body
-  });
+  const msg = {
+      to: process.env.EMAIL, // Odbiorca
+      from: 'elstermetalhead@gmail.com', // Nadawca (musi być zweryfikowany w SendGrid)
+      subject: "ten zjeb chcę się z tobą skontaktować",
+      text: data,
+      html: '<strong>' + data + '</strong>',
+  };
 
-  console.log("Message sent: %s", info.messageId);
+  try {
+      await sgMail.send(msg);
+      console.log("Wiadomość wysłana");
+  } catch (error) {
+      console.error(error);
+
+      if (error.response) {
+          console.error(error.response.body)
+      }
+  }
+}
+
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
   //
@@ -48,7 +47,6 @@ async function send(data) {
   //       Or you can use the "preview-email" npm package to preview emails locally in browsers and iOS Simulator
   //       <https://github.com/forwardemail/preview-email>
   //
-}
 
 // Połącz się z bazą danych MySQL
 // const db = mysql.createConnection({

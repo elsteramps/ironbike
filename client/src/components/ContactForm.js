@@ -44,12 +44,12 @@ function ContactForm(show, handleClose) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitted(true)
      await axios.post('https://ironbike.onrender.com/reqs', formData)
       .then(res => {
         console.log(res);
       })
       .catch(err => console.log(err))
-      setSubmitted(true)
   };
 
   return (

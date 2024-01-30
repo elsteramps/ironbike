@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
 const sgMail = require('@sendgrid/mail');
-
+const mongoose = require('mongoose');
 require('dotenv').config();
 const password = process.env.PASSWORD_EMAIL;
 console.log(process.env.PASSWORD_EMAIL)
@@ -11,12 +11,65 @@ const app = express();
 const port = process.env.PORT || 5000;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+const sampleProducts = [
+  { name: 'Mountain Bike', price: '1200', image: '/client/public/images/2.jpg', reserved: false },
+  { name: 'Road Bike', price: '1000', image: '../client/public/images/5.jpg', description: 'Fast road bike', reserved: false },
+  // Add more sample products as needed
+];
+
+// Temporary route to add sample products to the database
+app.get('/add-sample-products', async (req, res) => {
+  try {
+    await Product.insertMany(sampleProducts);
+    res.send('Sample products added successfully');
+  } catch (error) {
+    res.status(500).send('Error adding sample products');
+  }
+});
+
 
 // Ustaw obsługę CORS
 app.use(cors());
 
 // Obsługa danych w formacie JSON
 app.use(bodyParser.json());
+
+mongoose.connect('mongodb+srv://admin:admin@cluster0.ttxfn10.mongodb.net/kontakty', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Define a schema for the product
+const productSchema = new mongoose.Schema({
+  name: String,
+  price: String,
+  image: String,
+  description: String,
+});
+
+// Create a model based on the schema
+const Product = mongoose.model('Product', productSchema, 'products');
+
+// Route to fetch all products
+app.get('/products', async (req, res) => {
+  try {
+    const products = await Product.find();
+    res.json(products);
+  } catch (error) {
+    res.status(500).send('Error fetching products');
+  }
+});
+
+// Route to fetch a single product by ID
+app.get('/products/:id', async (req, res) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      res.json(product);
+    } else {
+      res.status(404).send('Product not found');
+    }
+  } catch (error) {
+    res.status(500).send('Error fetching product');
+  }
+});
 
 
 async function send(data) {

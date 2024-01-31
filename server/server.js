@@ -12,8 +12,8 @@ const port = process.env.PORT || 5000;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sampleProducts = [
-  { name: 'Mountain Bike', price: '1200', image: '/client/public/images/2.jpg', reserved: false },
-  { name: 'Road Bike', price: '1000', image: '../client/public/images/5.jpg', description: 'Fast road bike', reserved: false },
+  { name: 'Mountain Bike', price: '1200 zł', image: 'https://n69.pl/media/mf_webp/jpg/media/catalog/product/cache/88a2aeeb0c0b22688527a6761111bc61/c/l/clone-a-willy-zestaw-do-klonowania-swiecacy-w-ciemnosci-zielony_1_.webp', reserved: false },
+  { name: 'Road Bike', price: '1000 zł', image: 'https://woome.pl/wp-content/uploads/sites/13/p-monstered-dragon-dildo-lodrax-25-cm-productimage-1.jpg', description: 'Fast road bike', reserved: false },
   // Add more sample products as needed
 ];
 

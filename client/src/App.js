@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Routes, BrowserRouter, Outlet } from 'r
 import Services from './components/pages/Services';
 import Cennik from './components/Cennik'
 import Modal from './components/Modal';
+import Shop from './components/pages/Shop';
+import ProductDetail from './components/ProductDetail';
 
 
 function App() {
@@ -34,7 +36,9 @@ function App() {
         <Routes>
           <Route path='/' exact element={<Home/>} />
           <Route path='/services' element={<Services/>} />
+          <Route path="/shop" element={<Shop/>} />
           <Route path='/prices' element={<Cennik/>} />
+          <Route path="/products/:productId" element={<ProductDetail/>} />
         </Routes>
       </Router>
 

@@ -12,8 +12,11 @@ const port = process.env.PORT || 5000;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const sampleProducts = [
-  { name: 'Mountain Bike', price: '1200 zł', image: 'https://n69.pl/media/mf_webp/jpg/media/catalog/product/cache/88a2aeeb0c0b22688527a6761111bc61/c/l/clone-a-willy-zestaw-do-klonowania-swiecacy-w-ciemnosci-zielony_1_.webp', reserved: false },
-  { name: 'Road Bike', price: '1000 zł', image: 'https://woome.pl/wp-content/uploads/sites/13/p-monstered-dragon-dildo-lodrax-25-cm-productimage-1.jpg', description: 'Fast road bike', reserved: false },
+  { name: 'Dema Roxie', price: '1999 zł', image: 'https://muzikercdn.com/uploads/products/14268/1426863/main_b712aa33.jpg', reserved: false },
+  { name: 'Dema Tigra', price: '1999 zł', image: 'https://zdjecia.bikeworld.pl/produkty/medium/rowery_gorskie_xc_maraton_dema_tigra_1_0_1b7bc.jpg', description: 'Dema Tiger', reserved: false },
+  { name: 'Zeger', price: '1379 zł', image: 'https://a.allegroimg.com/s1024/0ca4fc/91d5341f43c5a7ab823d0e90bb35', description: 'Zeger', reserved: false },
+  { name: 'Modet Orion', price: '1499 zł', image: 'https://b2b.dema.bike/virtual/l/B21157.jpg', description: 'Modet Orion', reserved: false },
+  { name: 'Modet City 24', price: '1200 zł', image: 'https://b2b.dema.bike/virtual/l/B21291.jpg', description: 'Modet city 24', reserved: false },
   // Add more sample products as needed
 ];
 
@@ -42,7 +45,29 @@ const productSchema = new mongoose.Schema({
   price: String,
   image: String,
   description: String,
+  reserved: { type: Boolean, default: false }
 });
+
+async function send(data, subject) {
+  const msg = {
+      to: process.env.EMAIL, // Odbiorca
+      from: 'elstermetalhead@gmail.com', // Nadawca (musi być zweryfikowany w SendGrid)
+      subject: subject,
+      text: data,
+      html: '<strong>' + data + '</strong>',
+  };
+
+  try {
+      await sgMail.send(msg);
+      console.log("Wiadomość wysłana");
+  } catch (error) {
+      console.error(error);
+
+      if (error.response) {
+          console.error(error.response.body)
+      }
+  }
+}
 
 // Create a model based on the schema
 const Product = mongoose.model('Product', productSchema, 'products');
@@ -50,7 +75,7 @@ const Product = mongoose.model('Product', productSchema, 'products');
 // Route to fetch all products
 app.get('/products', async (req, res) => {
   try {
-    const products = await Product.find();
+    const products = await Product.find({reserved: false});
     res.json(products);
   } catch (error) {
     res.status(500).send('Error fetching products');
@@ -71,27 +96,36 @@ app.get('/products/:id', async (req, res) => {
   }
 });
 
-
-async function send(data) {
-  const msg = {
-      to: process.env.EMAIL, // Odbiorca
-      from: 'elstermetalhead@gmail.com', // Nadawca (musi być zweryfikowany w SendGrid)
-      subject: "ten zjeb chcę się z tobą skontaktować",
-      text: data,
-      html: '<strong>' + data + '</strong>',
-  };
-
+app.post('/reserve/:id', async (req, res) => {
   try {
-      await sgMail.send(msg);
-      console.log("Wiadomość wysłana");
-  } catch (error) {
-      console.error(error);
+    const productId = req.params.id;
+    const formData = [
+      req.body.name,
+      req.body.email,
+      req.body.phone
+    ];
+    // Find and update/delete the product in the database
+    // For example, to mark as reserved:
+    const updatedProduct = await Product.findByIdAndUpdate(productId, { reserved: true }, { new: true });
 
-      if (error.response) {
-          console.error(error.response.body)
-      }
+    if (updatedProduct) {
+      res.status(200).send('Product reserved');
+    } else {
+      res.status(404).send('Product not found');
+    }
+
+    let content = formData.reduce(function(a, b) {
+      return a + '<li>' + b + '</li>';
+    }, '');
+  
+    send(content, `ten zjeb zarezerwował rower ${productId}`);
+  } catch (error) {
+    res.status(500).send('Error reserving product');
   }
-}
+});
+
+
+
 
   // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
 
@@ -194,7 +228,7 @@ app.post('/reqs', (req, res) => {
       return a + '<li>' + b + '</li>';
     }, '');
 
-    send(content);
+    send(content, 'ten zjeb chce się z tobą skontaktować');
     
 
 //     const sql = 'INSERT INTO reqs (`imię`, `email`, `telefon`) VALUES (?)';

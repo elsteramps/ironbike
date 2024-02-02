@@ -1,0 +1,82 @@
+.product-detail-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .product-info {
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+  }
+
+  .contact-form-modal{
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .contact-enter-active {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 1000ms , background-color 1000ms ;
+  }
+  
+  .contact-exit {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  .contact-exit-active {
+    opacity: 0;
+    background-color: none;
+    transition: opacity 1000ms , background-color 1000ms ;
+  }
+  
+  @media (min-width: 768px) {
+    .product-detail-container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+  
+    .product-image, .product-actions {
+      flex: 1;
+      max-width: 50%;
+    }
+  
+    .product-info {
+      flex: 2;
+      max-width: 50%;
+      padding-left: 20px; /* Add some spacing between the image and the text */
+    }
+  }
+  

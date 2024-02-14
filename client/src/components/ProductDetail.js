@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import "./ProductDetail.css"
 import { CSSTransition } from "react-transition-group";
 
@@ -49,8 +51,6 @@ function ProductDetail() {
     setSelectedProductId(productId);
   };
 
-  
-
   if (!product) return <div>Loading...</div>;
 
   return (
@@ -70,7 +70,9 @@ function ProductDetail() {
         >
         <div className="contact-form-modal">
           <form onSubmit={handleFormSubmit}>
-          <button onClick={handleClose} className="contact-close-button">Cancer</button>
+          <button onClick={handleClose} className="contact-close-button">
+          <FontAwesomeIcon icon={faTimes}/>
+          </button>
             <label>Name: <input type="text" value={contactInfo.name} onChange={e => setContactInfo({ ...contactInfo, name: e.target.value })} /></label>
             <label>Email: <input type="email" value={contactInfo.email} onChange={e => setContactInfo({ ...contactInfo, email: e.target.value })} /></label>
             <label>Phone: <input type="tel" value={contactInfo.phone} onChange={e => setContactInfo({ ...contactInfo, phone: e.target.value })} /></label>

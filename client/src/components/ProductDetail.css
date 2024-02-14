@@ -54,6 +54,10 @@
     opacity: 1;
     background-color: rgba(0, 0, 0, 0.5);
   }
+
+  .contact-close-button{
+    
+  }
   
   .contact-exit-active {
     opacity: 0;

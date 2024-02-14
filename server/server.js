@@ -1,12 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const nodemailer = require("nodemailer");
 const sgMail = require('@sendgrid/mail');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const password = process.env.PASSWORD_EMAIL;
-console.log(process.env.PASSWORD_EMAIL)
 const app = express();
 const port = process.env.PORT || 5000;
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
@@ -37,7 +35,7 @@ app.use(cors());
 // Obsługa danych w formacie JSON
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://admin:admin@cluster0.ttxfn10.mongodb.net/kontakty', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGOOSE_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Define a schema for the product
 const productSchema = new mongoose.Schema({
@@ -98,12 +96,14 @@ app.get('/products/:id', async (req, res) => {
 
 app.post('/reserve/:id', async (req, res) => {
   try {
+
     const productId = req.params.id;
     const formData = [
       req.body.name,
       req.body.email,
       req.body.phone
     ];
+
     // Find and update/delete the product in the database
     // For example, to mark as reserved:
     const updatedProduct = await Product.findByIdAndUpdate(productId, { reserved: true }, { new: true });
@@ -118,7 +118,7 @@ app.post('/reserve/:id', async (req, res) => {
       return a + '<li>' + b + '</li>';
     }, '');
   
-    send(content, `ten zjeb zarezerwował rower ${productId}`);
+    send(content, `zarezerwowany rpwer ${productId}`);
   } catch (error) {
     res.status(500).send('Error reserving product');
   }
@@ -228,7 +228,7 @@ app.post('/reqs', (req, res) => {
       return a + '<li>' + b + '</li>';
     }, '');
 
-    send(content, 'ten zjeb chce się z tobą skontaktować');
+    send(content, 'Ta osoba prosi o kontakt');
     
 
 //     const sql = 'INSERT INTO reqs (`imię`, `email`, `telefon`) VALUES (?)';
